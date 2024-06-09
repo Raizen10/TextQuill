@@ -1,0 +1,244 @@
+body {
+  margin-left: 180px;
+  margin-right: 180px;
+  margin-top:40px;
+  font-size: 16px;
+  font-family: "Arial";
+}
+
+button:hover{
+  background-color:rgb(80,80,110);
+}
+
+/*menu*/
+
+.menu {
+  display: flex;
+  align-items: center; /* Vertically center align items */
+  margin-bottom: 0px;
+}
+
+.menu h3 {
+  margin-right: auto; /* Push h3 element to the left */
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  margin-left:50px;
+}
+
+.menu ul li {
+  margin-left: 50px;/* Adjust spacing between items as needed */
+}
+
+.menu ul li:first-child {
+  margin-left: 0; /* Remove margin from the first item */
+}
+
+.menu ul li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+/* Navigation links */
+.li1 a {
+    background-color: rgb(104,104,144);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+.li1 a:hover {
+    background-color: rgb(80,80,110);
+}
+
+
+
+.input-outline {
+   display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    width: 100%;
+    padding: 5px 0px 15px 0px;
+    border-radius: 25px;
+}
+
+/*top-input*/
+
+.top-input {
+   margin-left: auto;
+   margin-right: 10px;
+}
+
+#uploadButton,
+.clearb,
+.pasteb {
+    margin-right: 10px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: none;
+    height: 30px;
+    padding: 2px 10px;
+}
+
+#uploadButton {
+    margin-right: 0px;
+}
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 450px;
+    box-sizing: border-box;
+    resize: none;
+    border-radius: 20px;
+    outline: none;
+    padding: 20px;
+    background-color: transparent;
+    font-size: 17px;
+    font-family: "Arial";
+    border: 2px solid;
+    overflow: hidden;
+}
+
+/*bottom-input*/
+
+.bottom-input {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+}
+
+
+label[for="summary-type"]{
+    margin-left: 10px;
+}
+
+.segmented-buttons {
+    display: flex;
+    margin-left: 15px;
+}
+
+.segmented-buttons input[type="radio"] {
+    display: none;
+}
+
+.segmented-buttons label {
+    padding: 8px 16px;
+    
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#extractive + label {
+    border-radius: 30px 0px 0px 30px;
+}
+
+#both + label {
+    border-radius: 0px 30px 30px 0px;
+}
+
+.segmented-buttons input[type="radio"]:checked + label {
+    background-color: rgb(104,104,144);
+    color: rgb(104,104,144);
+}
+
+.segmented-buttons label:hover {
+    background-color: rgb(80,80,110);
+}
+
+.translate-input{
+  margin-left:25px;
+}
+
+/*select*/
+#translate {
+  margin-left:15px;
+  padding: 8px 12px; /* Add padding for better spacing */
+  font-size: 16px; /* Increase font size for better readability */
+  border: 1px solid #ccc; /* Add border for better visibility */
+  border-radius: 20px; /* Add border radius for rounded corners */
+  background-color: #f9f9f9; /* Add background color */
+  color: #333; /* Set text color */
+  width:105px;
+  }
+
+/* Style for the options within the select element */
+#translate option {
+  padding: 8px 12px; /* Add padding for better spacing */
+  font-size: 16px; /* Set font size */
+}
+
+/* Style for the disabled option */
+#translate option[disabled] {
+  color: #999; /* Set color for disabled option */
+}
+
+/* Style for the hover state of options */
+#translate option:hover {
+  background-color: rgb(80,80,110); /* Change background color on hover */
+}
+
+
+/* Submit button */
+.submitb {
+  margin-left: auto;
+  margin-right:10px;
+}
+
+.submit {
+    border-radius: 30px;
+    border: none;
+    height: 35px;
+    padding: 4px 10px;
+}
+
+
+
+#relatedArticles {
+  margin-top: 20px; /* Add some top margin */
+}
+
+.articles-container {
+  display: flex; /* Use flexbox to arrange articles */
+  flex-wrap: wrap; /* Allow wrapping of articles */
+}
+
+.article {
+  display: flex; /* Use flexbox for each article */
+  margin-right: 20px; /* Add some right margin between articles */
+  margin-bottom: 20px; /* Add some bottom margin between rows */
+}
+
+.article:last-child {
+  margin-right: 0; /* Remove margin for the last article in a row */
+}
+
+.article-image {
+  width: 150px; /* Set width for the image */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Add margin between image and details */
+}
+
+.article-details {
+  flex: 1; /* Expand to fill remaining space */
+}
+
+.article a {
+  color: inherit; /* Inherit the color from the parent element */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold;
+}
+
+.article a:hover {
+  color:  rgb(80,80,110); /* Change the color to red on hover */
+}

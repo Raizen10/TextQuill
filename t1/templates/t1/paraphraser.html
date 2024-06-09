@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Paraphraser</title>
+    <script src="{% static 't1/script.js' %}"></script>
+     <link rel="stylesheet" type="text/css" href="{% static 't1/par.css' %}">
+
+    <!-- Include CSS and JavaScript files if needed -->
+</head>
+<body>
+  <nav class="menu">
+    <h3><span >TextQuill</span></h3>
+      <ul>
+        <li class="li1"><a href="{% url 'input_form' %}">Summarizer</a></li>
+        <li class="li2"><a href="{% url 'translator_form' %}">Translator</a></li>
+        <li class="li3"><a href="{% url 'paraphraser_form' %}">Paraphraser</a></li>
+        <li class="li4"><a href="#">About</a></li>     
+      </ul>
+  </nav>
+
+  <form id="paraphraserForm" method="post" action="{% url 'paraphraser_form' %}">
+    {% csrf_token %}
+    <div class="text-input">
+        <div class="input-outline">
+            <div class="top-input">
+                <button class="clearb" type="button" onclick="clearTextArea()">Clear</button>
+                <button class="pasteb" type="button" onclick="pasteText()">Paste</button>
+                <button id="uploadButton" type="button" onclick="uploadFile()">Upload</button>
+                <input type="file" id="documentUpload" accept=".txt, .docx,.pdf" style="display: none;" onchange="handleFileUpload(event)">
+            </div>
+            <textarea id="inputText" name="input_text" placeholder="Enter your text here" spellcheck="false"></textarea>
+        </div>
+    </div>
+    <div class="submitb">
+        <button class="submit" type="submit">Paraphrase</button>
+    </div>
+</form>
+
+{% if paraphrased_text %}
+<div id="paraphrasedText">
+    <h2>Paraphrased Text:</h2>
+    <p>{{ paraphrased_text }}</p>
+</div>
+{% endif %}
+
+
+</body>
+</html>
+

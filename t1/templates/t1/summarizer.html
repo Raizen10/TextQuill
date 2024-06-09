@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <script src="{% static 't1/script.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 't1/sum.css' %}">
+
+    <!-- Include CSS and JavaScript files if needed -->
+</head>
+<body>
+  <nav class="menu">
+    <h3><span >TextQuill</span></h3>
+      <ul>
+        <li class="li1"><a href="{% url 'input_form' %}">Summarizer</a></li>
+        <li class="li2"><a href="{% url 'translator_form' %}">Translator</a></li>
+        <li class="li3"><a href="{% url 'paraphraser_form' %}">Paraphraser</a></li>
+        <li class="li4"><a href="#">About</a></li>     
+      </ul>
+  </nav>
+
+  <form id="summarizerForm" method="post" action="{% url 'summarize_text' %}">
+    {% csrf_token %}
+    <div class="text-input">
+      <div class="input-outline">
+        <div class="top-input">
+          <button class="clearb" type="button" onclick="clearTextArea()">Clear</button>
+          <button class="pasteb" type="button" onclick="pasteText()">Paste</button>
+          <button id="uploadButton" type="button" onclick="uploadFile()">Upload</button>
+          <input type="file" id="documentUpload" accept=".txt, .docx,.pdf" style="display: none;" onchange="handleFileUpload(event)">
+        </div>
+        <textarea id="inputText" name="input_text" placeholder="Enter your text here" spellcheck="false">{{ input_text }}</textarea>
+        <div class="bottom-input">
+          <div class= "filters">
+            <label for="summary-type">Type&nbsp;&nbsp;&nbsp;:</label>
+            <div class="segmented-buttons">
+              <input type="radio" id="extractive" name="summary_type" value="extractive">
+              <label for="extractive">Extractive</label>
+              <input type="radio" id="abstractive" name="summary_type" value="abstractive">
+              <label for="abstractive">Abstractive</label>
+              <input type="radio" id="both" name="summary_type" value="both">
+              <label for="both">Both</label>
+            </div>
+          </div>
+          <div class="translate-input">
+            <label for="translate">Translate&nbsp;&nbsp;&nbsp;:</label>
+            <select id="translate" name="translate_language">
+              <option value="" selected disabled>None</option>
+              <option value="hi">Hindi</option>
+              <option value="ml">Malayalam</option>
+              <option value="es">Spanish</option>
+              <option value="ru">Russian</option>
+              <option value="ja">Japanese</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <!-- Add more language options as needed -->
+            </select>
+          </div>
+          <div class="submitb">
+            <button class="submit" type="submit">Summarize</button>
+          </div>    
+        </div>
+      </div> 
+    </div>
+  </form>
+
+    
+
+<div id="summarizedText">
+  <!-- Output summary will be displayed here -->
+  {% if translated_text %}
+    <h2>Translated Text:</h2>
+    <p>{{ translated_text }}</p>
+  {% elif summarized_text %}
+    <h2>Summarized Text:</h2>
+    <p>{{ summarized_text }}</p>
+  {% endif %}
+</div>
+
+<!-- Display related articles if available -->
+<div id="relatedArticles">
+  {% if related_articles %}
+    <h2>Related Articles:</h2>
+    <div class="articles-container">
+      {% for article in related_articles %}
+        <div class="article">
+          {% if article.image_url %}
+            <img src="{{ article.image_url }}" class="article-image">
+          {% endif %}
+          <div class="article-details">
+            <a href="{{ article.link }}">{{ article.title }}</a><br>
+            <p>{{ article.snippet }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+ 
+</body>
+
+</html>
+
